@@ -3,7 +3,7 @@ export const CustomFooter = () => {
 
 	return (
 		<footer className="border-t border-gray-200 dark:border-gray-700 mt-16 py-12 text-sm text-gray-400 dark:text-gray-400 flex items-center justify-center">
-			<div className='flex flex-col items-center w-full justify-between max-w-8xl md:flex-row space-y-4 md:space-y-0'>
+			<div className="flex flex-col md:flex-row items-center justify-between w-full max-w-8xl px-4 mx-auto max-w-8xl lg:px-12">
 				<a
 					href={'https://thoughtly.com'}
 					target="_blank"
@@ -19,7 +19,9 @@ export const CustomFooter = () => {
 						className="h-5 hidden dark:block"
 					/>
 				</a>
-				<span>© {year} Thoughtly, Inc. All Rights Reserved.</span>
+				<div className="pt-4 md:pt-0">
+					© {year} Thoughtly, Inc. All Rights Reserved.
+				</div>
 			</div>
 		</footer>
 	);
