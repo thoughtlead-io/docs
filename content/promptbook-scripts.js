@@ -9,7 +9,7 @@ function filterPromptbooks() {
 
 	cards.forEach(card => {
 		const category = card.getAttribute("data-category");
-		const text = normalize(card.innerText) || normalize(card.textContent) || normalize(category)
+		const text = normalize(card.innerText) || normalize(card.textContent) || normalize(category) || normalize(card.integrations || "");
 
 		const matchesCategory = selectedCategory === "Filter" || category === selectedCategory;
 		const matchesSearch = text.includes(searchQuery);

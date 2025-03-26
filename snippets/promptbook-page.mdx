@@ -25,9 +25,18 @@ export const PromptbookPage = () => {
 						{promptbook.description}
 					</p>
 				</div>
-				<div className="border border-gray-200 dark:border-gray-700 rounded-md flex items-center px-2 py-1">
-					<div className="font-medium text-black dark:text-white text-sm">
-						{promptbook.category}
+				<div className="flex flex-row gap-3 items-center">
+					{promptbook.integrations?.map((integration) => (
+						<div className="border border-gray-200 dark:border-gray-700 rounded-md flex items-center px-2 py-1">
+							<div className="font-medium text-black dark:text-white text-sm">
+								{integration}
+							</div>
+						</div>
+					))}
+					<div className="border border-gray-200 dark:border-gray-700 rounded-md flex items-center px-2 py-1">
+						<div className="font-medium text-black dark:text-white text-sm">
+							{promptbook.category}
+						</div>
 					</div>
 				</div>
 			</div>

@@ -11,13 +11,15 @@ window.promptbookData = [
 		title: "Automated calling via Salesforce",
 		description: "Automatically call leads from Salesforce and log call outcomes back to the CRM.",
 		image: "https://cdn.arcade.software/cdn-cgi/image/fit=scale-down,f=auto,width=1920,q=75/extension-uploads/MaOO9bPhyHAP5ZdOq8Gt/image/7fb2adcf-0e04-4b56-8919-775160f66117.png",
-		category: "CRM"
+		category: "CRM",
+		integrations: ["Salesforce"]
 	},
 	{
 		id: "MaOO9bPhyHAP5ZdOq8Gt",
 		title: "Instant voice cloning",
 		description: "In just a few steps, learn how to clone your voice to power your Voice Agents on phone calls– all powered by Cartesia's sonic model.",
 		image: "https://cdn.arcade.software/cdn-cgi/image/fit=scale-down,format=auto,dpr=2,width=2048/extension-uploads/MaOO9bPhyHAP5ZdOq8Gt/image/7fb2adcf-0e04-4b56-8919-775160f66117.png",
-		category: "Voices"
+		category: "Voices",
+		integrations: ["Cartesia"]
 	}
 ];
