@@ -1,0 +1,26 @@
+export const CustomFooter = () => {
+	const year = new Date().getFullYear();
+
+	return (
+		<footer className="border-t border-gray-200 dark:border-gray-700 mt-16 py-12 text-sm text-gray-400 dark:text-gray-400 flex items-center justify-center">
+			<div className='flex flex-row items-center w-full justify-between max-w-8xl'>
+				<a
+					href={'https://thoughtly.com'}
+					target="_blank"
+				>
+					<img 
+						src="/images/logo/wordmark-light.svg" 
+						alt="Thoughtly Logo" 
+						className="h-5 block dark:hidden"
+					/>
+					<img 
+						src="/images/logo/wordmark-dark.svg" 
+						alt="Thoughtly Logo" 
+						className="h-5 hidden dark:block"
+					/>
+				</a>
+				<span>© {year} Thoughtly, Inc. All Rights Reserved.</span>
+			</div>
+		</footer>
+	);
+}

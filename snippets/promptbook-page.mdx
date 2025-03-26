@@ -1,0 +1,61 @@
+export const PromptbookPage = () => {
+	if (typeof window === 'undefined') return null;
+
+	const searchParams = new URLSearchParams(window.location.search);
+	const id = searchParams.get('id');
+
+	const promptbook = window.promptbookData?.find((b) => b.id === id);
+
+	if (!promptbook) {
+		return (
+			<div className="py-12 text-left text-gray-500 dark:text-gray-400">
+				Promptbook not found.
+			</div>
+		);
+	}
+
+	return (
+		<div>
+			<div className="py-8 flex flex-row items-start justify-between">
+				<div>
+					<h1 className="text-4xl font-bold text-gray-900 dark:text-white">
+						{promptbook.title}
+					</h1>
+					<p className="text-sm text-gray-500 dark:text-gray-400 mt-3 max-w-md">
+						{promptbook.description}
+					</p>
+				</div>
+				<div className="border border-gray-200 dark:border-gray-700 rounded-md flex items-center px-2 py-1">
+					<div className="font-medium text-black dark:text-white text-sm">
+						{promptbook.category}
+					</div>
+				</div>
+			</div>
+
+			<div
+				style={{
+					position: 'relative',
+					paddingBottom: 'calc(54.13424124513618% + 41px)',
+					height: 0,
+					width: '100%',
+				}}
+			>
+				<iframe
+					src={`https://demo.arcade.software/${promptbook.id}?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true`}
+					frameBorder="0"
+					loading="lazy"
+					allowFullScreen
+					allow="clipboard-write"
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						width: '100%',
+						height: '100%',
+						colorScheme: 'light',
+					}}
+				/>
+			</div>
+		</div>
+	);
+};

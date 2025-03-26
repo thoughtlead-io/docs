@@ -1,0 +1,126 @@
+import promptbooks from '/snippets/promptbooks-data';
+
+export const PromptbookGallery = () => {
+	if (typeof window === 'undefined') return null;
+
+	const promptbooks = window.promptbookData
+
+	if (!promptbooks) {
+		return (
+			<div className="py-12 text-left text-gray-500 dark:text-gray-400">
+				Loading...
+			</div>
+		);
+	}
+
+	const categories = [
+		'Filter',
+		...promptbooks.reduce((acc, book) => {
+			if (!acc.includes(book.category)) {
+				acc.push(book.category)
+			}
+			return acc
+		}, [])
+	]
+
+	const categoryColors = promptbooks.reduce((acc, book) => {
+		if (!acc[book.category]) {
+			acc[book.category] = [
+				'#EF6E8B',
+				'#F59E0B',
+				'#7C83FD',
+				'#FF92A5',
+				'#A78BFA',
+				'#60A5FA',
+				'#C084FC',
+				'#FB7185',
+				'#F472B6',
+				'#FACC15',
+			][Object.keys(acc).length]
+		}
+		return acc
+	}, {})
+
+	return (
+		<div className="w-full">
+			<div className="responsive-promptbook-heading">
+				<div className='flex flex-row gap-x-4 items-center'>
+					<span className='text-2xl font-medium text-gray-900 dark:text-white'>
+						Browse Promptbooks
+					</span>
+					<Icon icon="arrow-down" iconType="light" size={16}/>
+				</div>
+				<div className="flex flex-row gap-3 items-center justify-end">
+					<div className="border border-gray-200 dark:border-gray-700 rounded-md flex items-center px-4 py-2">
+						<Icon icon="magnifying-glass" iconType="light" color="gray" size={12} />
+						<input
+							type="text"
+							id="promptbookSearch"
+							placeholder="Search promptbooks..."
+							className="pl-2 text-sm bg-transparent focus:outline-none pr-8"
+						/>
+					</div>
+
+					<div className="border border-gray-200 dark:border-gray-700 rounded-md flex items-center px-4 py-2">
+						<Icon icon="filter" iconType="light" color="gray" size={12} />
+						<select
+							id="categoryFilter"
+							className="pl-2 appearance-none bg-transparent focus:outline-non text-sm"
+						>
+							{categories.map((cat) => (
+								<option key={cat} value={cat}>{cat}</option>
+							))}
+						</select>
+					</div>
+				</div>
+			</div>
+			<div id="promptbookGrid" className="grid gap-6 py-8">
+				{promptbooks.map(book => (
+					<div
+						key={book.link}
+						className="promptbook-card transition rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden"
+						data-category={book.category}
+					>
+						<a 
+							href={`/promptbooks/book?id=${book.id}`}
+							className="block h-full"
+						>
+							<div 
+								className="bg-primary border-b border-gray-200 dark:border-gray-700 relative overflow-hidden px-4"
+								style={{ height: "150px" }}
+							>
+								<div
+									className="relative"
+									style={{
+									borderRadius: "8px",
+									overflow: "hidden",
+									height: "100%",
+									transform: "translateY(10%)",
+									}}
+								>
+									<img
+										src={book.image}
+										alt={book.title}
+										className="w-full h-full object-cover"
+									/>
+								</div>
+								<div
+									className="absolute top-1.5 right-1.5 text-xs text-white font-medium dark:text-gray-200 bg-gray-100 dark:bg-gray-800 rounded-md px-2 py-1 shadow-lg"
+									style={{
+										backgroundColor: categoryColors[book.category],
+									}}
+								>
+									{book.category}
+								</div>
+							</div>
+							<div className="p-4">
+								<h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{book.title}</h3>
+								<p className="text-sm text-gray-600 dark:text-gray-400">{book.description}</p>
+							</div>
+						</a>
+					</div>
+				))}
+			</div>
+		</div>
+	)
+}

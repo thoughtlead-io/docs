@@ -1,0 +1,32 @@
+---
+title: Thoughtly Promptbooks | Resources to help you build powerful Voice Agents
+sidebarTitle: Browse Promptbooks
+description: Resources to help you build powerful Voice Agents
+mode: "custom"
+---
+
+import { PromptbookPage } from '/snippets/promptbook-page.mdx'
+import { CustomFooter } from '/snippets/custom-footer.mdx'
+
+<div className='px-4 mx-auto max-w-8xl lg:px-8'>
+	<div className="max-w-fit">
+		<a 
+			href="/promptbooks"
+			className="py-8 inline-flex items-center gap-x-2 transition-transform transform hover:scale-105 origin-left"
+		>
+			<Icon icon="arrow-left" iconType="light" size={16} />
+			<span className="text-primary font-medium">
+				Browse Promptbooks
+			</span>
+		</a>
+	</div>
+	<div className='w-[150px] pointer-events-none cursor-default'>
+		<img className="block dark:hidden" src="/images/misc/promptbooks-light.png" alt="Promptbooks" />
+		<img className="hidden dark:block" src="/images/misc/promptbooks-dark.png" alt="Promptbooks" />
+	</div>
+
+	<PromptbookPage />
+	
+</div>
+
+<CustomFooter />

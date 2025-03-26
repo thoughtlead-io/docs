@@ -34,11 +34,6 @@
 	},
 	"anchors": [
 		{
-			"name": "Dashboard",
-			"icon": "browser",
-			"url": "https://app.thoughtly.com"
-		},
-		{
 			"name": "Platform Status",
 			"icon": "server",
 			"url": "https://status.thoughtly.com"
@@ -47,6 +42,11 @@
 			"name": "Slack Community",
 			"icon": "slack",
 			"url": "https://community.thoughtly.com"
+		},
+		{
+			"name": "Thoughtly Subreddit",
+			"icon": "reddit",
+			"url": "https://reddit.com/r/thoughtly"
 		},
 		{
 			"name": "Join Office Hours",
@@ -68,6 +68,10 @@
 		{
 			"name": "Documentation",
 			"url": "/"
+		},
+		{
+			"name": "Promptbooks",
+			"url": "/promptbooks"
 		},
 		{
 			"name": "Integrations",
@@ -274,6 +278,12 @@
 			"pages": [
 				"integrations/automations/zapier",
 				"integrations/automations/make"
+			]
+		},
+		{
+			"group": "Promptbooks",
+			"pages": [
+				"promptbooks/browse"
 			]
 		}
 	],
