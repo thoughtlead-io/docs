@@ -2,34 +2,36 @@ export const CustomFooter = () => {
 	const year = new Date().getFullYear();
 
 	return (
-		<footer
-			style={{
-				borderTop: '1px solid #e5e7eb',
-				marginTop: '4rem',
-				paddingTop: '3rem',
-				paddingBottom: '3rem',
-				fontSize: '0.875rem',
-				color: '#9ca3af',
-			}}
-			className="dark:border-gray-700 dark:text-gray-400"
-		>
+		<footer>
 			<div
-				className="flex flex-col md:flex-row items-center justify-between w-full max-w-8xl px-4 lg:px-12 mx-auto"
+				style={{
+					borderTop: '1px solid #e5e7eb',
+					marginTop: '4rem',
+					paddingTop: '3rem',
+					paddingBottom: '3rem',
+					fontSize: '0.875rem',
+					color: '#9ca3af',
+				}}
+				className="dark:border-gray-700 dark:text-gray-400"
 			>
-				<a href="https://thoughtly.com" target="_blank">
-					<img
-						src="https://cdn.thoughtly.com/logo/wordmark-light.svg"
-						alt="Thoughtly Logo"
-						className="h-5 block dark:hidden"
-					/>
-					<img
-						src="https://cdn.thoughtly.com/logo/wordmark-dark.svg"
-						alt="Thoughtly Logo"
-						className="h-5 hidden dark:block"
-					/>
-				</a>
-				<div className="pt-4 md:pt-0">
-					© {year} Thoughtly, Inc. All Rights Reserved.
+				<div
+					className="flex flex-col md:flex-row items-center justify-between w-full max-w-8xl px-4 lg:px-12 mx-auto"
+				>
+					<a href="https://thoughtly.com" target="_blank">
+						<img
+							src="https://cdn.thoughtly.com/logo/wordmark-light.svg"
+							alt="Thoughtly Logo"
+							className="h-5 block dark:hidden"
+						/>
+						<img
+							src="https://cdn.thoughtly.com/logo/wordmark-dark.svg"
+							alt="Thoughtly Logo"
+							className="h-5 hidden dark:block"
+						/>
+					</a>
+					<div className="pt-4 md:pt-0">
+						© {year} Thoughtly, Inc. All Rights Reserved.
+					</div>
 				</div>
 			</div>
 		</footer>
