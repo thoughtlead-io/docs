@@ -16,10 +16,10 @@
 		}
 	],
 	"paths": {
-		"/job/create_job_by_contacts": {
-			"post": {
-				"summary": "Create job",
-				"description": "This endpoint allows you to create a job to trigger an **Agent** to call many contacts provided by their IDs or phone numbers.",
+		"/interview": {
+			"get": {
+				"summary": "Get agents",
+				"description": "This endpoint retrieves a list of **Agents** (formerly **Interviews**) available in your system. You can filter the list by status, search term, and sorting options.",
 				"responses": {
 					"200": {
 						"description": "Successful response",
@@ -33,45 +33,166 @@
 					}
 				},
 				"tags": [
-					"job"
+					"agent"
 				],
-				"requestBody": {
-					"content": {
-						"application/json": {
-							"schema": {
-								"type": "object",
-								"properties": {
-									"interview_id": {
-										"type": "string",
-										"description": "The ID of the **Agent** (formerly **Interview**) that will be used to make the call. This ID can be found in the URL of the **Agent** page. The **Agent** is responsible for the conversation flow during the call."
-									},
-									"contact_ids": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										},
-										"description": "A list of **Contact** IDs to call. You can pass multiple **Contact** IDs to call multiple contacts."
-									},
-									"phone_numbers": {
-										"type": "array",
-										"items": {
-											"type": "string"
-										},
-										"description": "A list of phone numbers to call directly if you don't want to use **Contact** IDs."
-									},
-									"country_code": {
-										"type": "string",
-										"description": "The country code for the phone numbers being dialed (e.g., '+1' for the USA)."
-									}
-								},
-								"required": [
-									"interview_id"
-								],
-								"additionalProperties": false
+				"parameters": [
+					{
+						"name": "search",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						},
+						"description": "Search term to filter **Agents** by title, name, or other relevant properties."
+					},
+					{
+						"name": "status",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"enum": [
+								"ACTIVE",
+								"ARCHIVED"
+							]
+						},
+						"description": "Filter **Agents** by their current status. Choose either 'ACTIVE' or 'ARCHIVED'."
+					},
+					{
+						"name": "sort",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"enum": [
+								"title_asc",
+								"title_desc",
+								"created_asc",
+								"created_desc"
+							]
+						},
+						"description": "Specify the field to sort the **Agents** by, such as 'title' or 'created date'."
+					},
+					{
+						"name": "all_interviews",
+						"in": "query",
+						"schema": {
+							"type": "boolean"
+						},
+						"description": "Set to true to return all **Agents**, including archived ones."
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"description": "Specify the page of results to retrieve (pagination)."
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"minimum": 1,
+							"maximum": 50,
+							"default": 20
+						},
+						"description": "Specify the maximum number of **Agents** to return per page (pagination). The default is 20."
+					}
+				]
+			}
+		},
+		"/interview/{interview_id}/responses": {
+			"get": {
+				"summary": "Search calls",
+				"description": "Find calls made by an **Agent** (formerly **Interview**). You can filter and search calls based on various criteria.",
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GenericResponse"
+								}
 							}
 						}
 					}
-				}
+				},
+				"tags": [
+					"agent"
+				],
+				"parameters": [
+					{
+						"name": "interview_id",
+						"description": "The ID of the **Agent** (formerly **Interview**) that made the call. This ID can be found in the URL of the **Agent** page.",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						},
+						"description": "Search term to filter call responses by relevant properties."
+					},
+					{
+						"name": "response_tags",
+						"in": "query",
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"style": "form",
+						"explode": true,
+						"description": "Filter responses by tags associated with them."
+					},
+					{
+						"name": "status",
+						"in": "query",
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						},
+						"style": "form",
+						"explode": true,
+						"description": "Filter responses by status (e.g., 'success', 'failure')."
+					},
+					{
+						"name": "job_id",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						},
+						"description": "Filter responses by the associated job ID."
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"minimum": 0
+						},
+						"description": "Specify the page of results to retrieve (pagination)."
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"schema": {
+							"type": "integer",
+							"minimum": 1,
+							"maximum": 50,
+							"default": 20
+						},
+						"description": "Specify the maximum number of responses to return per page (pagination). The default is 20."
+					}
+				]
 			}
 		},
 		"/contact/create": {
@@ -329,10 +450,10 @@
 				}
 			}
 		},
-		"/interview": {
-			"get": {
-				"summary": "Get agents",
-				"description": "This endpoint retrieves a list of **Agents** (formerly **Interviews**) available in your system. You can filter the list by status, search term, and sorting options.",
+		"/job/create_job_by_contacts": {
+			"post": {
+				"summary": "Create job",
+				"description": "This endpoint allows you to create a job to trigger an **Agent** to call many contacts provided by their IDs or phone numbers.",
 				"responses": {
 					"200": {
 						"description": "Successful response",
@@ -346,166 +467,45 @@
 					}
 				},
 				"tags": [
-					"agent"
+					"job"
 				],
-				"parameters": [
-					{
-						"name": "search",
-						"in": "query",
-						"schema": {
-							"type": "string"
-						},
-						"description": "Search term to filter **Agents** by title, name, or other relevant properties."
-					},
-					{
-						"name": "status",
-						"in": "query",
-						"schema": {
-							"type": "string",
-							"enum": [
-								"ACTIVE",
-								"ARCHIVED"
-							]
-						},
-						"description": "Filter **Agents** by their current status. Choose either 'ACTIVE' or 'ARCHIVED'."
-					},
-					{
-						"name": "sort",
-						"in": "query",
-						"schema": {
-							"type": "string",
-							"enum": [
-								"title_asc",
-								"title_desc",
-								"created_asc",
-								"created_desc"
-							]
-						},
-						"description": "Specify the field to sort the **Agents** by, such as 'title' or 'created date'."
-					},
-					{
-						"name": "all_interviews",
-						"in": "query",
-						"schema": {
-							"type": "boolean"
-						},
-						"description": "Set to true to return all **Agents**, including archived ones."
-					},
-					{
-						"name": "page",
-						"in": "query",
-						"schema": {
-							"type": "integer",
-							"minimum": 0
-						},
-						"description": "Specify the page of results to retrieve (pagination)."
-					},
-					{
-						"name": "limit",
-						"in": "query",
-						"schema": {
-							"type": "integer",
-							"minimum": 1,
-							"maximum": 50,
-							"default": 20
-						},
-						"description": "Specify the maximum number of **Agents** to return per page (pagination). The default is 20."
-					}
-				]
-			}
-		},
-		"/interview/{interview_id}/responses": {
-			"get": {
-				"summary": "Search calls",
-				"description": "Find calls made by an **Agent** (formerly **Interview**). You can filter and search calls based on various criteria.",
-				"responses": {
-					"200": {
-						"description": "Successful response",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/GenericResponse"
-								}
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"interview_id": {
+										"type": "string",
+										"description": "The ID of the **Agent** (formerly **Interview**) that will be used to make the call. This ID can be found in the URL of the **Agent** page. The **Agent** is responsible for the conversation flow during the call."
+									},
+									"contact_ids": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": "A list of **Contact** IDs to call. You can pass multiple **Contact** IDs to call multiple contacts."
+									},
+									"phone_numbers": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": "A list of phone numbers to call directly if you don't want to use **Contact** IDs."
+									},
+									"country_code": {
+										"type": "string",
+										"description": "The country code for the phone numbers being dialed (e.g., '+1' for the USA)."
+									}
+								},
+								"required": [
+									"interview_id"
+								],
+								"additionalProperties": false
 							}
 						}
 					}
-				},
-				"tags": [
-					"agent"
-				],
-				"parameters": [
-					{
-						"name": "interview_id",
-						"description": "The ID of the **Agent** (formerly **Interview**) that made the call. This ID can be found in the URL of the **Agent** page.",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					},
-					{
-						"name": "search",
-						"in": "query",
-						"schema": {
-							"type": "string"
-						},
-						"description": "Search term to filter call responses by relevant properties."
-					},
-					{
-						"name": "response_tags",
-						"in": "query",
-						"schema": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"style": "form",
-						"explode": true,
-						"description": "Filter responses by tags associated with them."
-					},
-					{
-						"name": "status",
-						"in": "query",
-						"schema": {
-							"type": "array",
-							"items": {
-								"type": "string"
-							}
-						},
-						"style": "form",
-						"explode": true,
-						"description": "Filter responses by status (e.g., 'success', 'failure')."
-					},
-					{
-						"name": "job_id",
-						"in": "query",
-						"schema": {
-							"type": "string"
-						},
-						"description": "Filter responses by the associated job ID."
-					},
-					{
-						"name": "page",
-						"in": "query",
-						"schema": {
-							"type": "integer",
-							"minimum": 0
-						},
-						"description": "Specify the page of results to retrieve (pagination)."
-					},
-					{
-						"name": "limit",
-						"in": "query",
-						"schema": {
-							"type": "integer",
-							"minimum": 1,
-							"maximum": 50,
-							"default": 20
-						},
-						"description": "Specify the maximum number of responses to return per page (pagination). The default is 20."
-					}
-				]
+				}
 			}
 		},
 		"/user": {
