@@ -1,2 +1,2 @@
-npx @mintlify/scraping@latest openapi-file api/openapi.json -o api-reference -y
+npx @mintlify/scraping@latest openapi-file api-reference/openapi.json -o api-reference -y
 mintlify dev
