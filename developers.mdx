@@ -7,7 +7,29 @@ description: Deploy your Voice Agent using our powerful API
 
 Welcome to the Thoughtly Developer Documentation! Here you'll find everything you need to build and deploy Voice Agents with Thoughtly.
 
-After [building a Voice Agent](/build/overview.mdx) using our drag-and-drop interface, you can deploy it using our powerful API. This allows you to integrate your Voice Agent with your existing systems, or build custom integrations to suit your needs.
+After [building a Voice Agent](/build/overview.mdx) using our drag-and-drop interface, you can deploy it using our powerful API. This allows you to integrate your Voice Agent with your existing systems or build custom integrations to suit your needs.
+
+## Triggering Calls: Two Approaches
+
+There are two ways you can trigger a call with your **Voice Agent:**
+
+### 1. **Trigger a Call via the API (Programmatically)**
+
+To trigger a call programmatically, you first need to create a **Contact** using the **`/contact/create`** endpoint. Once the **Contact** is created, you will receive a **Contact ID** that can be used to trigger the call via the **`/contact/call`** endpoint. 
+
+By creating a **Contact**, you are confirming that the owner of the provided phone number has consented to receive the call, in accordance with your jurisdiction's laws and regulations.
+
+This method allows you to integrate the Voice Agent call process into your existing system programmatically.
+
+### 2. **Trigger a Call via Automations (Recommended)**
+
+Using **[Automations](/build/automations/overview)** allows you to trigger a call with your **Agent** through a webhook. This is a great way to set up the process once and let others, such as product or operations teams, modify the logic later without needing to engage engineering again. 
+
+Automations can be set up with a flexible webhook payload, allowing you to pass in any amount of data. This enables other teams to modify the call logic and workflows directly through the Thoughtly UI, without having to bother engineering for small changes. 
+
+This method is recommended because it allows your engineering team to configure the integration once, then set it and forget it, empowering non-technical teams to manage the workflow themselves.
+
+---
 
 ## Getting Started
 
@@ -20,7 +42,7 @@ Our API is designed to be simple and easy to use. You can interact with your Voi
 import { NextSection } from '/snippets/next-section.mdx'
 
 <NextSection
-	title="API Reference"
+    title="API Reference"
     icon="code"
     href="/api-reference"
     description="Learn how to interact with your Voice Agents using our API ->"
