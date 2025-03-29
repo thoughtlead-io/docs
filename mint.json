@@ -190,6 +190,7 @@
 			"pages": [
 				"resources/faq",
 				"resources/videos",
+				"resources/office-hours",
 				"resources/glossary",
 				{
 					"group": "Whitepapers",
