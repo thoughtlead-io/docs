@@ -1,0 +1,90 @@
+---
+title: Thoughtly Office Hours - March 17, 2025
+description: Updates on Thoughtly product features, voice cloning, and agency tools
+---
+
+<img className="block dark:hidden mb-8" src="/images/misc/office-hours-light.svg" alt="Office hours" />
+<img className="hidden dark:block mb-8" src="/images/misc/office-hours-dark.svg" alt="Office hours" />
+
+<Frame caption="Thoughtly Office Hours - March 17, 2025">
+	<iframe width="560" height="315" src="https://drive.google.com/file/d/1s4Piu8ozWbHKwSkgI4cvs8dT1r1HbgRr/preview" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</Frame>
+
+---
+
+Join us weekly for **Office Hours** to discuss all things Thoughtly. [RSVP here](https://thoughtly.com/office-hours) to be notified about upcoming sessions.
+
+#### Voice Cloning Update [00:06:30]
+
+- Introduction of the new voice cloning feature that allows users to clone a voice via the Thoughtly dashboard and immediately listen to how the cloned voice sounds as a voice agent on Thoughtly.
+- Users can clone their voices for free and connect them to V1.8 agents, with future support planned for V2 agents.
+- This feature is particularly useful for individuals with distinctive voices or personalities, such as local real estate agents, who want to have a personalized agent voice.
+- Currently, the system supports English, with future expansions to other languages.
+- Discussion of integration with 11 Labs and the use of Cartisia as the voice cloning provider, which is said to provide equal or better results than 11 Labs according to Cartisia's claims.
+
+#### Security and Privacy in Voice Cloning [00:10:00]
+
+- Discussion on the security aspect of voice cloning: each voice cloned is private and only accessible by the user who uploaded it.
+- Concerns were raised about the availability of high-definition voice clones and their high cost, which limits their accessibility.
+- Suggested alternative: upload professional-quality recording to Cartisia's service for equal or better results in a private setting.
+
+#### Status Page and Latency Issues [00:14:00]
+
+- Introduction of a new, effective status page at `status.thoughtly.com` that shows real-time system metrics, latency per region, and agent deployment states.
+- SIP Integration announced; allows for deployment without needing individual phone numbers for each transfer, simplifying the process for businesses with multiple locations.
+- Mention of an ongoing test to ensure accurate notifications without false alerts. Plans for integrating with the Thoughtly Slack community for real-time alerts.
+
+#### Agent V1.8 and Upcoming V2 Features [00:19:00]
+
+- Upcoming rollout of Version 2 (V2) expected in April, with enhanced UI and backend capabilities.
+- V2 aims to eliminate the common issue where agents are interrupted by callers mid-conversation, improving the streamlined workflow.
+- Enhancements in V2 include a better interface and improved conversational AI that can handle complex dialogues more effectively.
+- Discussion of partner programs and agency inquiries regarding features like white labeling and third-party API integrations.
+
+#### Troubleshooting Large Inventories with Thoughtly [00:23:00]
+
+- Discussion on the limitations of the Genius database when dealing with large inventories, such as those found in car dealerships.
+- Recommended approaching includes API integration with inventory systems since direct Genius database uploads with large inventories are not efficient.
+- Suggestions to use mid-call actions and APIs to handle inventory queries dynamically.
+
+#### SIP Integration for VoIP [00:31:00]
+
+- Assurance given that the SIP integration tool is forthcoming and will allow businesses to transfer calls back into their existing VoIP solutions like 3CX.
+- A possibility of reduced latency was discussed, citing a need for improved regional carrier implementation, specifically in Europe.
+- Feedback emphasized on the "call me" button's inefficiency versus using a local phone number for less latency.
+
+#### Pricing and Credit Management Concerns [00:36:00]
+
+- Concerns raised about the higher cost of Thoughtly SMS compared to raw Twilio costs, especially given that the SMS system is priced for the most expensive global regions by default.
+- Future intentions to implement region-based pricing in both SMS and voice calling to better manage overheads and align more closely with real usage costs.
+- Suggested improvements to the user experience, allowing transactional SMS pricing and automated scaling without upsizing a full subscription to cover transient increases in usage.
+
+#### Feedback and Community Engagement [00:44:00]
+
+- Discussed potential alternatives to Slack for community interaction, such as Discord, school groups, forums, or subreddits.
+- Slack is criticized for being cumbersome and leading to lost information due to message expiration and limited functionality for threads.
+- Suggestions were made for Thoughtly to provide consolidated training resources and better support through tools that cater to both technical and non-technical users.
+  
+#### Additional Thoughtly Product Ideas and Improvements [00:49:00]
+
+- Discussed the potential for creating a structured user feedback system on ideas and implementations needed by users.
+- Community suggestions for tools like validation nodes for SMS verification and voice call verifications to be used during customer interactions.
+- Talked about improving internal consistency around mid-call actions, and suggestions to help Thoughtly agents remain in specific conversation nodes until tasks are complete.
+- Discussion surrounding the improvement of contextual awareness for agents within workflows, ensuring consistent performance even during complex interactions.
+- Addressed the need for better organizational features in the voice library, such as folders and the ability to categorize and favorite certain voices.
+
+#### Troubleshooting 1.8 Features [01:14:00]
+
+- Addressed issues reported by users regarding Thoughtly agents prematurely terminating calls and confusion in the agent’s speaking order.
+- Discussed enhancements for the objective node functionality to ensure agents remain on task until certain conditions are met.
+- Encouraged users to experiment with advanced prompts and persistent context within nodes to manage consistency better.
+- Plans to improve agent behavior through enhanced context awareness and remediation of current bugs that affect dialogue flow reliability.
+
+import { NextSection } from '/snippets/next-section.mdx'
+
+<NextSection
+    title="Get Started"
+    icon="rocket"
+    href="https://auth.thought.ly/signup"
+    description="Sign up for a free account and start building your Voice Agent today ->"
+/>
