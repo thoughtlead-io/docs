@@ -30,4 +30,4 @@ setTimeout(() => {
 
 	categoryFilter.addEventListener("change", filterPromptbooks);
 	searchInput.addEventListener("input", filterPromptbooks);
-}, 100);
+}, 1000);
