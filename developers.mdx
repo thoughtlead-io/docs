@@ -35,13 +35,12 @@ We apply rate limits to all API calls, to ensure fair usage and maintain the ava
 
 If you exceed the rate limit, you will receive a `429 Too Many Requests` response. You can retry the request after a short delay.
 
-## Getting Started
+## Authentication
 
-To get started, you'll need to create an API key in the [Thoughtly dashboard](https://app.thoughtly.com). This key will be used to authenticate your requests to the API.
+Sending authenticated requests to the Thoughtly API requires two headers present in every request. These values can be found in the [Thoughtly dashboard](https://app.thoughtly.com/settings/developers).
 
-## API Reference
-
-Our API is designed to be simple and easy to use. You can interact with your Voice Agents using RESTful HTTP requests.
+1. `x-api-key`: Your API key.
+2. `team_id`: To support multi-tenancy, you must include the `team_id` of the team you want to access.
 
 import { NextSection } from '/snippets/next-section.mdx'
 
