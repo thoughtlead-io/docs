@@ -29,7 +29,11 @@ Automations can be set up with a flexible webhook payload, allowing you to pass 
 
 This method is recommended because it allows your engineering team to configure the integration once, then set it and forget it, empowering non-technical teams to manage the workflow themselves.
 
----
+## Rate Limits
+
+We apply rate limits to all API calls, to ensure fair usage and maintain the availability and stability of the platform. Our rate limit across the whole API is **100 requests per minute**. We may occasionally reduce the rate limit as part of incident response to protect our other systems.
+
+If you exceed the rate limit, you will receive a `429 Too Many Requests` response. You can retry the request after a short delay.
 
 ## Getting Started
 
